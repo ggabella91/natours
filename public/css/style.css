@@ -1087,6 +1087,7 @@ body {
 
 @media only screen and (max-width: 50em) {
   .card-container {
+    max-width: 100%;
     grid-template-columns: repeat(1, 1fr);
   }
 }
