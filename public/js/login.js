@@ -24,6 +24,34 @@ export const login = async (email, password) => {
   }
 };
 
+export const signup = async (name, email, password, passwordConfirm) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/users/signup',
+      data: {
+        name,
+        email,
+        password,
+        passwordConfirm
+      }
+    });
+    console.log('Response Log:');
+    console.log(res);
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Created account successfully!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    }
+  } catch (err) {
+    console.log('Error Log:');
+    console.log(err);
+    showAlert('error', err.response.data);
+  }
+};
+
 export const logout = async () => {
   try {
     const res = await axios({
